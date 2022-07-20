@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/css/style.css" />
+
+    <title>Patient Home</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MedChain</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/view-responce">View Responces</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="login-cnt">
+        <div class="container wrap">
+            <form method="post" action="/pat-med-record-post">
+                <h3 class="mb-4">Add Record</h3>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Choose Department</label>
+                  <select class="custom-select" id="deptSel" name="department">
+                    <option value="62d3a5628de2dc85c449d9dd" selected>Select Department</option>
+                    <% for(let i=0; i < deptData.length; i++) { %>
+                    <option value=<%= deptData[i]._id %>><%= deptData[i].department %></option>
+                    <% } %>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Choose Doctor</label>
+                    <select class="custom-select" id="docSel" name="docter">
+                      <option selected>Select Docter</option>
+                      <% for(let i=0; i < docterData.length; i++) { %>
+                        <option value=<%= docterData[i]._id %>><%= docterData[i].department %></option>
+                        <% } %>
+                    </select>
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Add Heading</label>
+                  <input type="text" class="form-control"  placeholder="Heading" name="heading" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="age" class="form-label">Age</label>
+                            <input name='age' type="number" class="form-control" id="age" placeholder="Age" name="age" required>
+                         </div>
+                         <div class="col-md-4">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="custom-select" name="gender">
+                                <option selected value="NA">Choose Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Human">Human</option>
+                              </select>
+                         </div>
+                         <div class="col-md-4">
+                            <label for="b-group" class="form-label">Blood Group</label>
+                            <select class="custom-select" name="bloodgroup">
+                                <option selected value="NA">Choose Blood Group</option>
+                                <option value="A+">A+ve</option>
+                                <option value="A-">A-ve</option>
+                                <option value="B+">B+ve</option>
+                                <option value="B-">B-ve</option>
+                                <option value="O+">O+ve</option>
+                                <option value="O-">O-ve</option>
+                              </select>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="age" class="form-label">Height</label>
+                            <input name='height' type="number" class="form-control" id="age" placeholder="Height" required>
+                         </div>
+                         <div class="col-md-4">
+                            <label for="age" class="form-label">Weight</label>
+                            <input name='weight' type="number" class="form-control" id="age" placeholder="Weight" required>
+                         </div>
+
+                         <div class="col-md-4">
+                            <label for="gender" class="form-label" style="color: white;">Allergy's</label>
+                            <select class="custom-select" name="allergy">
+                                <option selected value="NA">Allergy</option>
+                                <option value="Food">Food</option>
+                                <option value="Dust">Dust</option>
+                                <option value="Pet">Pet</option>
+                                <option value="Other">Other</option>
+                              </select>
+                         </div>
+                         
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="age" class="form-label">Sugar</label>
+                            <input name='sugar' type="number" class="form-control" id="age" placeholder="Sugar" required>
+                         </div>
+                         <div class="col-md-4">
+                            <label for="age" class="form-label">Cholestrol</label>
+                            <input name='cholestrol' type="number" class="form-control" id="age" placeholder="Cholostrol" required>
+                         </div>
+
+                         <div class="col-md-4">
+                            <label for="gender" class="form-label" style="color: white;">Pressure</label>
+                            <input name='pressure' type="number" class="form-control" id="age" placeholder="Pressure" required>
+                         </div>
+                         
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <textarea name="description" class="form-control"  rows="3" placeholder="Description" required></textarea>
+                  </div>
+                
+                <button type="submit" class="btn btn-outline-light">Create Record</button>
+              </form>
+              <div class="err">
+                <p><%= errormessage %></p>
+              </div>
+        </div>
+      </div>
+
+      <div>
+        <h6 class="text-center">Developed by Anooja S Aniyan  &copy; 2022</h6>
+      </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+      let deptSel = document.getElementById('deptSel')
+      let docSel = document.getElementById('docSel')
+
+      deptSel.addEventListener('change', async (event) => {
+
+        docSel.innerHTML="<option selected>Select Docter</option>"
+
+        const resp = await fetch("http://localhost:3000/pat-home-deptchange", {
+          method: "POST",
+          headers: {'Content-Type' : 'application/json','Accept': 'application/json'},
+          body: JSON.stringify({deptId:deptSel.value}),
+        })
+        const data = await resp.json();
+
+        for(let i=0;i<data.length;i++){
+          let newOption = new Option(data[i].fullname,data[i]._id);
+          docSel.add(newOption,undefined)
+
+        }
+        
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+// const a = new BlockChain([{
+//     date: '01/01/2017',
+//     data: 'Genisis Block',
+//     previousHash: '0',
+//     hash: 'ab556136fa63f197ecf5a14579ce562836d87241e4b8d796ec1d217507ab096d',
+//     nounce: 0
+//   }])
+// const b = a.addBlock(new Block(date,{data:''}))
+// const c = a.addBlock(new Block(date,{data:'qqq'}))
+// console.log(c)
+
+
+
+
+
+
+
+
+const post_medical_record = async(req,res)=>{
+    const medBlock = new BlockChain(getChain())
+    const newBlock = medBlock.addBlock(new Block(date,{data:req.body}))
+    Record.create(newBlock).then((res)=>{
+        console.log('sucess')
+    }).catch((err)=>{
+        console.log('fail')
+    })
+
+}
+
+
+mongoose.connect('mongodb://localhost:27017/medChain', {useNewUrlParser:true, useUnifiedTopology:true}).then(async (res)=>{
+    const data= await Record.find({})
+    const medBlock = new BlockChain(data)
+    const newBlock = medBlock.addBlock(new Block(date,{data:'req.body'}))
+    console.log(newBlock)
+})
+
+
+        <div class="cnt-scrl">
+
+            <% for(let i = 0; i < patData.length; i++) { %>
+                
+                <div class="pat-card">
+                <form action="/doc-responce-post" method="post">
+                    <h2><%= patData[i].data.heading %></h2>
+                    <hr>
+                    <h5>Patient Name: <%= `${patData[i].user.fname} ${patData[i].user.lname}` %></h5>
+                    <h5>Patient ID: <%= patData[i].user._id.toString()  %></h5>
+                    <hr>
+                    <p>
+                        <%= patData[i].data.description %>
+                    </p>
+                    <hr>
+                    <input type="text" name="record" value="<%= patData[i]._id.toString()  %>" hidden>
+                    <button type="submit" style="float: right;" class="btn btn-outline-dark">Take a Look</button>
+                </form>
+                </div>
+                
+            <% } %>
+        </div>

@@ -1,0 +1,21 @@
+{
+  "name": "med-chain",
+  "version": "1.0.0",
+  "description": "a blockchain based app fpr managing medical details",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "createAdmin": "node control/createAdmin.js",
+    "createGenisisBlock":"node control/createGenisisBlock.js"
+  },
+  "author": "anooja s aniyan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "crypto-js": "^4.1.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4"
+  }
+}

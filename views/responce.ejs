@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+
+    <title>Add Responce</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">MedChain</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container fluid responce">
+      <div class="resp-cnt">
+       <h4 class="text-center mb-4">Medical Report</h4>
+       <div>
+        <div>
+            <p><b>Record Id : <%= patData._id %></b></p>
+        </div>
+        <table class="table table-bordered mt-2">
+            <tbody>
+              <tr>
+                <th scope="row">Docter</th>
+                <td><b><%= patData.data.docter %></b></td>
+                <th scope="row">Department</th>
+                <td><b><%= patData.data.department %></b></td>
+              </tr>
+            </tbody>
+          </table>
+        <table class="table table-bordered mt-2">
+            <tbody>
+              <tr>
+                <th scope="row">First Name</th>
+                <td><b><%= patData.user.fname %></b></td>
+                <th scope="row">Last Name</th>
+                <td><b><%= patData.user.lname %></b></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered mt-1">
+            <tbody>
+              <tr>
+                <th scope="row">Heading</th>
+                <td><b><%= patData.data.heading %></b></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered mt-1">
+            <tbody>
+              <tr>
+                <th scope="row">Age</th>
+                <td><b><%= patData.data.age %></b></td>
+                <th scope="row">Gender</th>
+                <td><b><%= patData.data.gender %></b></td>
+                <th scope="row">Blood Group</th>
+                <td><b><%= patData.data.bloodgroup %></b></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered mt-1">
+            <tbody>
+              <tr>
+                <th scope="row">Height</th>
+                <td><b><%= patData.data.height %></b></td>
+                <th scope="row">Weight</th>
+                <td><b><%= patData.data.weight %></b></td>
+                <th scope="row">Allergy</th>
+                <td><b><%= patData.data.allergy %></b></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered mt-1">
+            <tbody>
+              <tr>
+                <th scope="row">Sugar</th>
+                <td><b><%= patData.data.sugar %></b></td>
+                <th scope="row">Cholestrol</th>
+                <td><b><%= patData.data.cholestrol %></b></td>
+                <th scope="row">Pressure</th>
+                <td><b><%= patData.data.pressure %></b></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered mt-1">
+            <tbody>
+              <tr>
+                <th scope="row">Description</th>
+                <td><b><%= patData.data.description %></b></td>
+              </tr>
+            </tbody>
+          </table>
+          <form action="/post-responce-save" method="post">
+            <div class="form-group">
+                <label for="exampleInputPassword1"><b>Add Responce</b></label>
+                <textarea name="responce" class="form-control"  rows="3" placeholder="Responce" required></textarea>
+            </div>
+
+              <input type="text" name="user" value="<%= patData.user._id%>" id="" hidden>
+              <input type="text" name="record" value="<%= patData._id%>" id="" hidden>
+            <div style="float: right;">
+                <button  class="btn btn-outline-dark" onclick="window.location.href='/doc-home'">Go Home</button>
+                <button  type="submit" class="btn btn-outline-dark">Add Responce</button>
+            </div>
+          </form>
+          <div class="err">
+            <p><b><%= errormessage %></b></p>
+          </div>
+      </div>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="text-center">Developed by Anooja S Aniyan &copy; 2022</h6>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
