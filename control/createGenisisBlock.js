@@ -7,10 +7,10 @@ mongoose.connect('mongodb://localhost:27017/medChain', {useNewUrlParser:true, us
     if(data==null){
         Record.create({
             date: '2022-7-17',
+            user: '62d39778434691459e290711',
             data: {
                 department: '62d39778434691459e290711',
                 docter: '62d39778434691459e290711',
-                user: '62d39778434691459e290711',
                 heading: 'dummy',
                 age: 0,
                 gender: 'dummy',
@@ -32,6 +32,7 @@ mongoose.connect('mongodb://localhost:27017/medChain', {useNewUrlParser:true, us
             console.log(res)
         }).catch((err)=>{
             console.log('some error')
+            console.log(err)
         })
     }else{
         console.log(data)
